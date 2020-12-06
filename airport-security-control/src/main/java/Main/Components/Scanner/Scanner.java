@@ -7,7 +7,7 @@ import Main.ext.Search.KnuthMorrisPratt;
 
 public class Scanner {
 
-    public ScanResult scan(Baggage baggage, Configuration configuration) throws IllegalArgumentException {
+    public ScanResult scan(Baggage baggage, Shape shape) throws IllegalArgumentException {
         ScanResult result = null;
 
         var counter = 0;
@@ -17,9 +17,9 @@ public class Scanner {
 
             IStringMatching algo;
 
-            if (configuration.getUsedAlgorithm() == SearchAlgorithm.boyerMoore) {
+            if (shape.getUsedAlgorithm() == SearchAlgorithm.boyerMoore) {
                 algo = new BoyerMoore();
-            } else if (configuration.getUsedAlgorithm() == SearchAlgorithm.knuthMorrisPratt) {
+            } else if (shape.getUsedAlgorithm() == SearchAlgorithm.knuthMorrisPratt) {
                 algo = new KnuthMorrisPratt();
             } else {
                 throw new IllegalArgumentException();

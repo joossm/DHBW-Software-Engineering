@@ -57,7 +57,7 @@ public class MainTest {
 
 
     private BS generateBaggageScanner(Track track01, Track track02) {
-        return new BS(new Reader(), new Scanner(), new ScanRecorder(), track01, track02, new Belt(), new Configuration(SearchAlgorithm.boyerMoore));
+        return new BS(new Reader(), new Scanner(), new ScanRecorder(), track01, track02, new Belt(), new Shape(SearchAlgorithm.boyerMoore));
     }
 
     private SupervisorWorkspaceSupervisor generateSupervisor(SupervisorCounter supervisorWorkspace) throws Exception {

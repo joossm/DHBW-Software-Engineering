@@ -2,11 +2,11 @@ package Main.Components.BaggageScanner;
 
 import Main.Components.Belt;
 import Main.Components.Reader;
-import Main.Components.Scanner.Configuration;
 import Main.Components.Scanner.ProhibitedItem;
 import Main.Components.Scanner.Recorder.ScanRecorder;
 import Main.Components.Scanner.ScanResult;
 import Main.Components.Scanner.Scanner;
+import Main.Components.Scanner.Shape;
 import Main.Components.Track;
 import Main.Components.Tray;
 import Main.Employee.Employee;
@@ -24,16 +24,16 @@ public class BS {
     private final Track track02;
     private final Belt belt;
     private ScanResult currentScanResult;
-    private final Configuration scannerConfiguration;
+    private final Shape scannerShape;
 
-    public BS(Reader reader, Scanner scanner, ScanRecorder scanRecorder, Track track01, Track track02, Belt belt, Configuration scannerConfiguration) {
+    public BS(Reader reader, Scanner scanner, ScanRecorder scanRecorder, Track track01, Track track02, Belt belt, Shape scannerShape) {
         this.reader = reader;
         this.scanner = scanner;
         this.scanRecorder = scanRecorder;
         this.track01 = track01;
         this.track02 = track02;
         this.belt = belt;
-        this.scannerConfiguration = scannerConfiguration;
+        this.scannerShape = scannerShape;
     }
 
     public ScanRecorder getScanRecorder() {
@@ -107,7 +107,7 @@ public class BS {
             if (getState() == BSStatus.ACTIVATED && belt.getCurrent() != null) {
                 setState(BSStatus.INUSE);
 
-                result = scanner.scan(belt.getCurrent().getBaggage(), scannerConfiguration);
+                result = scanner.scan(belt.getCurrent().getBaggage(), scannerShape);
                 scanRecorder.logResult(result);
 
                 forwardTrays(e);
