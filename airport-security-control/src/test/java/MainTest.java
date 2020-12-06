@@ -272,7 +272,7 @@ public class MainTest {
 
     private void processOnWeaponFound(Tray tray, Passenger passenger, FederalPoliceOfficer policeOfficer03, ScanResult result) throws Exception {
 
-        var ret = policeOfficer01.openHandBaggageWeaponToOfficer(passenger, supervisor, policeOfficer03, tray, result);
+        policeOfficer01.openHandBaggageWeaponToOfficer(passenger, supervisor, policeOfficer03, tray, result);
 
         inspectorI2.clickButtonLeft();
 
@@ -460,25 +460,25 @@ public class MainTest {
         assertEquals(inspectorI1.getName(), "Clint Eastwood");
         assertEquals(inspectorI1.getBirthDate(), LocalDate.of(1930, 5, 31));
         assertTrue(inspectorI1.isSenior());
-        assertNotNull(inspectorI1.getWorkspace());
+        assertNotNull(inspectorI1.getCounter());
         assertTrue(reader.checkCard(inspectorI1.getIDCard(), EmployeeProfileType.I));
 
         assertEquals(inspectorI2.getName(), "Natalie Portman");
         assertEquals(inspectorI2.getBirthDate(), LocalDate.of(1981, 6, 9));
         assertFalse(inspectorI2.isSenior());
-        assertNotNull(inspectorI2.getWorkspace());
+        assertNotNull(inspectorI2.getCounter());
         assertTrue(reader.checkCard(inspectorI2.getIDCard(), EmployeeProfileType.I));
 
         assertEquals(inspectorI3.getName(), "Bruce Willis");
         assertEquals(inspectorI3.getBirthDate(), LocalDate.of(1955, 3, 19));
         assertTrue(inspectorI3.isSenior());
-        assertNotNull(inspectorI3.getWorkspace());
+        assertNotNull(inspectorI3.getCounter());
         assertTrue(reader.checkCard(inspectorI3.getIDCard(), EmployeeProfileType.I));
 
         assertEquals(supervisor.getName(), "Jodie Foster");
         assertEquals(supervisor.getBirthDate(), LocalDate.of(1962, 11, 19));
         assertFalse(supervisor.isSenior());
-        assertNotNull(supervisor.getWorkspace());
+        assertNotNull(supervisor.getCounter());
         assertTrue(reader.checkCard(supervisor.getIDCard(), EmployeeProfileType.S));
 
         assertEquals(policeOfficer01.getName(), "Wesley Snipes");

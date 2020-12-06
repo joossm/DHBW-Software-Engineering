@@ -22,7 +22,7 @@ public class ManualPostControlInspector extends Inspector {
     }
 
     @Override
-    public ManualPostControl getWorkspace() {
+    public ManualPostControl getCounter() {
         return manualPostControl;
     }
 

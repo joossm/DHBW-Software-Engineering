@@ -99,7 +99,7 @@ public class FederalPoliceOfficer extends Employee {
     }
 
     @Override
-    public Counter getWorkspace() {
+    public Counter getCounter() {
         return null;
     }
 

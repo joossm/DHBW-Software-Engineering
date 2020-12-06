@@ -1,4 +1,4 @@
-package Main.ext.aes;
+package Main.ext.advancedEncryptionStandard;
 
 import javax.crypto.spec.SecretKeySpec;
 import javax.crypto.Cipher;
