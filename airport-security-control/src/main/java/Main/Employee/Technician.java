@@ -1,7 +1,7 @@
 package Main.Employee;
 
 import Main.Components.BaggageScanner.BS;
-import Main.Counter.Counter;
+import Main.Workspaces.Workspace;
 
 import java.time.LocalDate;
 
@@ -17,7 +17,7 @@ public class Technician extends Employee {
     }
 
     @Override
-    public Counter getWorkspace() {
+    public Workspace getWorkspace() {
         return null;
     }
 

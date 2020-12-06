@@ -1,12 +1,12 @@
 package Main.Components;
 
 import Main.Components.BaggageScanner.BS;
-import Main.Counter.Counter;
+import Main.Workspaces.Workspace;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class RollerConveyor extends Counter {
+public class RollerConveyor extends Workspace {
     Queue<Tray> trays;
 
 

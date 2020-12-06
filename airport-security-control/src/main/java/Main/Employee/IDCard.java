@@ -21,23 +21,28 @@ public class IDCard {
         this.type = type;
     }
 
-    public String getMagnetStripe() {
+    public String getMagnetStripe()
+    {
         return magnetStripe;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public LocalDate getValidUntil() {
+    public LocalDate getValidUntil()
+    {
         return validUntil;
     }
 
-    public boolean isLocked() {
+    public boolean isLocked()
+    {
         return wrongPinCounter >= 3;
     }
 
-    public IDCardType getType() {
+    public IDCardType getType()
+    {
         return type;
     }
 
@@ -45,7 +50,8 @@ public class IDCard {
         wrongPinCounter++;
     }
 
-    public void resetWrongPinCounter() {
+    public void resetWrongPinCounter()
+    {
         wrongPinCounter = 0;
     }
 }

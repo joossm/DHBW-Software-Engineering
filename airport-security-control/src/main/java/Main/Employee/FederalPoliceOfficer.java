@@ -11,7 +11,7 @@ import Main.Passenger.Passenger;
 import Main.Robot;
 import Main.SimulationEmployee.SupervisorWorkspaceSupervisor;
 import Main.TestStripe;
-import Main.Counter.Counter;
+import Main.Workspaces.Workspace;
 
 import java.time.LocalDate;
 
@@ -99,7 +99,7 @@ public class FederalPoliceOfficer extends Employee {
     }
 
     @Override
-    public Counter getWorkspace() {
+    public Workspace getWorkspace() {
         return null;
     }
 

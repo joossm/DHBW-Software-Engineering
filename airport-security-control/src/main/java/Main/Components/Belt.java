@@ -1,54 +1,68 @@
 package Main.Components;
 
-public class Belt {
+public class Belt
+{
 
     private Tray incoming;
-    private Tray current;
     private Tray outgoing;
+    private Tray current;
 
-    protected void setIncoming(Tray incoming) {
+
+    protected void setIncoming(Tray incoming)
+    {
         this.incoming = incoming;
     }
 
-    public Tray getCurrent() {
+    public Tray getCurrent()
+    {
         return current;
     }
 
-    protected void setCurrent(Tray current) {
+    protected void setCurrent(Tray current)
+    {
         this.current = current;
     }
 
-    public void setIncomingTray(Tray tray) {
+    public void setIncomingTray(Tray tray)
+    {
         if(incoming != null)
         {
             throw new RuntimeException();
         }
+
         incoming = tray;
     }
+
     public Tray removeIncomingTray() {
         var temp = incoming;
         incoming = null;
         return temp;
     }
-    public void setCurrentTray(Tray tray) {
+
+    public void setCurrentTray(Tray tray)
+    {
         if(current != null)
         {
             throw new RuntimeException();
         }
         current = tray;
     }
+
     public Tray removeCurrentTray() {
         var temp = current;
         current = null;
         return temp;
     }
-    public void setOutgoingTray(Tray tray) {
+
+    public void setOutgoingTray(Tray tray)
+    {
         if(outgoing != null)
         {
             throw new RuntimeException();
         }
         outgoing = tray;
     }
+
     public Tray removeOutgoingTray() {
         var temp = outgoing;
         outgoing = null;
@@ -59,6 +73,7 @@ public class Belt {
         setOutgoingTray(removeCurrentTray());
         setCurrent(removeIncomingTray());
     }
+
     public void backwardTrays() {
         setIncomingTray(removeCurrentTray());
         setCurrent(removeOutgoingTray());
