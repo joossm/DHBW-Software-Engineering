@@ -26,8 +26,8 @@ public class FederalPoliceStation {
     public Robot getRoboter() {
         final int min = 0;
         final int max = 2;
-        final var i = ThreadLocalRandom.current().nextInt(min, max + 1);
+        final var x = ThreadLocalRandom.current().nextInt(min, max + 1);
 
-        return robots.get(i);
+        return robots.get(x);
     }
 }

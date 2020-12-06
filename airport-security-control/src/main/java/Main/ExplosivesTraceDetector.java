@@ -9,9 +9,9 @@ import java.util.Arrays;
 
 public class ExplosivesTraceDetector {
     public void test(TestStripe stripe) {
-        var b = new BruteForce();
+        var bf = new BruteForce();
         for (var x = 0; x < stripe.getData().length; x++) {
-            var result = b.search(Arrays.toString(stripe.getData()[x]), "exp");
+            var result = bf.search(Arrays.toString(stripe.getData()[x]), "exp");
             if (result != -1) {
                 new ScanResult(x, result, ProhibitedItem.EXPLOSIVE);
                 return;
