@@ -2,8 +2,8 @@ package Main.ext.advancedEncryptionStandard;
 
 import javax.crypto.spec.SecretKeySpec;
 import javax.crypto.Cipher;
-import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Arrays;
 
@@ -13,9 +13,7 @@ public class Application
 
     public static void main(String... args) throws Exception {
         Application application = new Application();
-
         final String secretKey = "dhbw$20^20_";
-
         String plainMessage = "***I***0614***";
         String encryptedString = application.encrypt(plainMessage, secretKey);
         application.decrypt(encryptedString, secretKey);
@@ -31,7 +29,6 @@ public class Application
 
     public void setKey(String inputKey) throws Exception {
         MessageDigest sha;
-
         byte[] key = inputKey.getBytes(StandardCharsets.UTF_8);
         sha = MessageDigest.getInstance("SHA-1");
         key = sha.digest(key);

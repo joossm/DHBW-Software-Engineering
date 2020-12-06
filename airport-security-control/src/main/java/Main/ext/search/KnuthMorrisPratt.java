@@ -23,7 +23,7 @@ public class KnuthMorrisPratt implements IStringMatching{
         int x = text.length();
         int y = pattern.length();
 
-        int[] fail = computeFail(pattern);
+        int[] failure = computeFail(pattern);
         int z = 0;
         int j = 0;
 
@@ -39,7 +39,7 @@ public class KnuthMorrisPratt implements IStringMatching{
             }
             else if (j > 0)
             {
-                j = fail[j - 1];
+                j = failure[j - 1];
             }
             else
             {
@@ -50,26 +50,26 @@ public class KnuthMorrisPratt implements IStringMatching{
         return -1;
     }
 
-    public int[] computeFail(String pattern) {
-        int[] fail = new int[pattern.length()];
-        fail[0] = 0;
+    public int[] computeFail(String pattern)
+    {
+        int[] failure = new int[pattern.length()];
+        failure[0] = 0;
         int m = pattern.length();
         int j = 0;
-        int i = 1;
+        int z = 1;
 
-        while (i < m) {
-            if (pattern.charAt(j) == pattern.charAt(i)) {
-                fail[i] = j + 1;
-                i++;
+        while (z < m) {
+            if (pattern.charAt(j) == pattern.charAt(z)) {
+                failure[z] = j + 1;
+                z++;
                 j++;
             } else if (j > 0) {
-                j = fail[j - 1];
+                j = failure[j - 1];
             } else {
-                fail[i] = 0;
-                i++;
+                failure[z] = 0;
+                z++;
             }
         }
-
-        return fail;
+        return failure;
     }
 }

@@ -32,7 +32,7 @@ public class Passenger {
     {
         this.baggages = baggages;
     }
-    private void setHandbaggage(int i)
+    private void setBaggage(int i)
     {
         this.baggages[i] = null;
     }
