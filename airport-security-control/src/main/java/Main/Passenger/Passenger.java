@@ -9,28 +9,28 @@ public class Passenger {
 
     private final String name;
 
-    public Passenger(String name, Baggage[] baggages)
+    public Passenger(String name, Baggage[] baggage)
     {
         this.name = name;
-        if(baggages.length > 3)
+        if(baggage.length > 3)
         {
             throw new IllegalArgumentException("Maximum length of array is 3");
         }
-        setBaggages(baggages);
+        setBaggage(baggage);
     }
 
     public String getName() {
         return name;
     }
 
-    public Baggage[] getBaggages()
+    public Baggage[] getBaggage()
     {
         return baggages;
     }
 
-    private void setBaggages(Baggage[] baggages)
+    private void setBaggage(Baggage[] baggage)
     {
-        this.baggages = baggages;
+        this.baggages = baggage;
     }
     private void setBaggage(int i)
     {
@@ -39,12 +39,12 @@ public class Passenger {
 
     public Baggage getNextBaggage()
     {
-        for(var i = 0; i < getBaggages().length; i++)
+        for(var i = 0; i < getBaggage().length; i++)
         {
-            var cur = getBaggages()[i];
+            var cur = getBaggage()[i];
             if(cur != null)
             {
-                setHandbaggage(i);
+                setBaggage(i);
                 return cur;
             }
         }
