@@ -9,8 +9,7 @@ public class Scanner {
 
 
 
-    public ScanResult scan(HandBaggage baggage, Configuration configuration)
-    {
+    public ScanResult scan(HandBaggage baggage, Configuration configuration) throws IllegalArgumentException {
         ScanResult result = null;
 
         var counter = 0;
@@ -22,9 +21,17 @@ public class Scanner {
 
             switch (configuration.getUsedAlgorithm())
             {
-                case boyerMoore -> algo = new BoyerMoore();
-                case knuthMorrisPratt -> algo = new KnuthMorrisPratt();
-                default -> throw new IllegalArgumentException();
+                case boyerMoore: {
+                    algo = new BoyerMoore();
+                    break;
+                }
+                case knuthMorrisPratt: {
+                    algo = new KnuthMorrisPratt();
+                    break;
+                }
+                default: {
+                    throw new IllegalArgumentException();
+                }
             }
 
             final String knife = "kn!fe";

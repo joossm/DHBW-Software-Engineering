@@ -9,7 +9,7 @@ public class Roboter
     {
         char[][] destroyed = new char[1000][50];
         var destroyedcounter = 0;
-        for (var  = 0; i < handBaggage.getLayers().length; i++)
+        for (int i = 0; i < handBaggage.getLayers().length; i++)
         {
             var currentLayer = handBaggage.getLayers()[i];
             for(var j = 0; j < currentLayer.getContent().length - 50; j = j + 50)

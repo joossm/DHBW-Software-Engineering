@@ -251,10 +251,21 @@ public class MainTest
                 var selectedbaggage = baggages[count];
                 var selectedLayer = selectedbaggage.getLayers()[layer];
                 switch (type) {
-                    case "K" -> selectedLayer.rewriteFromPos(pos, "kn!fe");
-                    case "W" -> selectedLayer.rewriteFromPos(pos, "glock|7");
-                    case "E" -> selectedLayer.rewriteFromPos(pos, "exp|os!ve");
-                    default -> throw new RuntimeException("Unknown type: " + type);
+                    case "K" : {
+                        selectedLayer.rewriteFromPos(pos, "kn!fe");
+                        break;
+                    }
+                    case "W" : {
+                        selectedLayer.rewriteFromPos(pos, "glock|7");
+                        break;
+                    }
+                    case "E" : {
+                        selectedLayer.rewriteFromPos(pos, "exp|os!ve");
+                        break;
+                    }
+                    default : {
+                        throw new RuntimeException("Unknown type: " + type);
+                    }
                 }
 
                 selectedbaggage.setLayer(layer, selectedLayer);
@@ -563,8 +574,11 @@ public class MainTest
 
                     //track1 manual control
                     switch (result.getType()) {
-                        case KNIFE -> processOnKnifeFound(tray, passenger, result);
-                        case EXPLOSIVE, WEAPON_GLOCK7 -> {
+                        case KNIFE : {
+                            processOnKnifeFound(tray, passenger, result);
+                            break;
+                        }
+                        case EXPLOSIVE: {
 
                             inspectorI2.activateAlarm();
 
@@ -588,12 +602,41 @@ public class MainTest
 
                             federalPoliceStation.addOfficer(policeOfficer02);
                             federalPoliceStation.addOfficer(policeOfficer03);
+                            break;
+                        }
+                        case WEAPON_GLOCK7: {
 
+                            inspectorI2.activateAlarm();
+
+                            policeOfficer01.arrestPassenger(passenger);
+
+                            FederalPoliceOfficer policeOfficer02 = policeOfficer01.callBackup();
+                            FederalPoliceOfficer policeOfficer03 = policeOfficer01.callBackup();
+
+
+                            if (result.getType() == ProhibitedItem.EXPLOSIVE) {
+                                processOnExplosiveFound(tray, policeOfficer02, policeOfficer03);
+                            }
+                            else if (result.getType() == ProhibitedItem.WEAPON_GLOCK7) {
+                                processOnWeaponFound(tray, passenger, policeOfficer03, result);
+                            }
+
+                            Passenger releasedPassenger = policeOfficer01.releasePassenger();
+                            policeOfficer02.arrestPassenger(passenger);
+                            var unlockWorked = supervisor.unlockBaggageScanner(new Pin("1234"));
+                            assertEquals(unlockWorked, true);
+
+                            federalPoliceStation.addOfficer(policeOfficer02);
+                            federalPoliceStation.addOfficer(policeOfficer03);
+                            break;
                         }
-                        case CLEAN -> {
+                        case CLEAN : {
                             scannedBaggage.add(tray.getHandBaggage());
+                            break;
                         }
-                        default -> throw new IllegalStateException("Unexpected value: " + result.getType());
+                        default : {
+                            throw new IllegalStateException("Unexpected value: " + result.getType());
+                        }
                     }
 
                 } while (!baggageScanner.getCurrentScanResult().isClean());

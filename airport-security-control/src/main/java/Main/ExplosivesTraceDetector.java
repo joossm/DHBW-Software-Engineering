@@ -14,10 +14,10 @@ public class ExplosivesTraceDetector
 
         for(var x = 0 ; x < stripe.getData().length; x++)
         {
-            var result = b.search(stripe.getData()[i].toString(), "exp");
+            var result = b.search(stripe.getData()[x].toString(), "exp");
 
             if(result != -1) {
-                return new ScanResult(i,result, ProhibitedItem.EXPLOSIVE);
+                return new ScanResult(x,result, ProhibitedItem.EXPLOSIVE);
             }
         }
 
