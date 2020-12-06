@@ -8,7 +8,6 @@ public class IDCard {
 
     private final int id;
     private final String magnetStripe;
-    private final IDCardType type;
     private final LocalDate validUntil;
     private int wrongPinCounter;
 
@@ -18,7 +17,6 @@ public class IDCard {
 
         AdvancedEncryptionStandard advancedEncryptionStandard = new AdvancedEncryptionStandard();
         this.magnetStripe = advancedEncryptionStandard.encrypt(magnetStripe);
-        this.type = type;
     }
 
     public String getMagnetStripe()
@@ -39,11 +37,6 @@ public class IDCard {
     public boolean isLocked()
     {
         return wrongPinCounter >= 3;
-    }
-
-    public IDCardType getType()
-    {
-        return type;
     }
 
     public void wrongPinEntered()

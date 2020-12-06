@@ -14,7 +14,7 @@ public class AdvancedEncryptionStandard {
     private byte[] key;
 
     public AdvancedEncryptionStandard() {
-        this.secretStr = "dhbw$20^20_";
+        this.secretStr = "mosbach@DHBW";
     }
 
     public String decrypt(String encryptedMessage) throws Exception {

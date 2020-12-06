@@ -14,7 +14,7 @@ public class Application
     public static void main(String... args) throws Exception {
         Application application = new Application();
 
-        final String secretKey = "dhbw$20^20_";
+        final String secretKey = "mosbach@DHBW";
 
         String plainMessage = "***I***0614***";
         String encryptedString = application.encrypt(plainMessage, secretKey);
@@ -22,11 +22,11 @@ public class Application
 
     }
 
-    public String decrypt(String encryptedMessage, String key) throws Exception {
+    public void decrypt(String encryptedMessage, String key) throws Exception {
         setKey(key);
         Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
         cipher.init(Cipher.DECRYPT_MODE, secretKey);
-        return new String(cipher.doFinal(Base64.getDecoder().decode(encryptedMessage)));
+        cipher.doFinal(Base64.getDecoder().decode(encryptedMessage));
     }
 
     public void setKey(String inputKey) throws Exception {

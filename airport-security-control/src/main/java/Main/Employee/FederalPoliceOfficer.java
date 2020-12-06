@@ -27,10 +27,6 @@ public class FederalPoliceOfficer extends Employee {
         this.station = station;
     }
 
-    public int getGrade() {
-        return grade;
-    }
-
     public void arrestPassenger(Passenger passenger) {
         arrestedPassenger = passenger;
     }
@@ -45,37 +41,34 @@ public class FederalPoliceOfficer extends Employee {
 
     public TestStripe swipe(Baggage baggage) {
 
-        var stripeData = dummyTestStripe();
+        dummyTestStripe();
 
-        var stripe = new TestStripe(new char[30][10]);
-
-        return stripe;
+        return new TestStripe(new char[30][10]);
     }
 
-    private static char[][] dummyTestStripe() {
+    private static void dummyTestStripe() {
 
         var data = "0123456789".toCharArray();
 
-        var arr = new char[30][10];
+        char[][] chars = new char[30][10];
 
-        arr[0] = "000exp0000".toCharArray();
+        chars[0] = "000exp0000".toCharArray();
 
-        for (var i = 1; i < arr.length; i++) {
-            arr[i] = data;
+        for (var i = 1; i < chars.length; i++) {
+            chars[i] = data;
         }
 
-        return arr;
     }
 
-    public ScanResult checkTestStripeWithDetector(TestStripe teststripe, ExplosivesTraceDetector detector) {
-        return detector.test(teststripe);
+    public void checkTestStripeWithDetector(TestStripe teststripe, ExplosivesTraceDetector detector) {
+        detector.test(teststripe);
     }
 
     public DestroyedBaggage destroy(Baggage baggage) {
         return controlledRobot.destroy(baggage);
     }
 
-    public Tray openHandBaggageWeaponToOfficer(Passenger passenger, SupervisorWorkspaceSupervisor supervisor, FederalPoliceOfficer policeOfficer03, Tray removeTray, ScanResult result) {
+    public void openHandBaggageWeaponToOfficer(Passenger passenger, SupervisorWorkspaceSupervisor supervisor, FederalPoliceOfficer policeOfficer03, Tray removeTray, ScanResult result) {
         var baggage = removeTray.getHandBaggage();
         if (result.getType() != ProhibitedItem.WEAPON_GLOCK7) {
             throw new IllegalArgumentException();
@@ -89,13 +82,10 @@ public class FederalPoliceOfficer extends Employee {
 
         removeTray.setHandBaggage(baggage);
 
-        return removeTray;
     }
 
-    public Passenger releasePassenger() {
-        var passenger = arrestedPassenger;
+    public void releasePassenger() {
         arrestedPassenger = null;
-        return passenger;
     }
 
     @Override

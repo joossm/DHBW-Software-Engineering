@@ -19,19 +19,12 @@ public class Scanner {
 
             IStringMatching algo;
 
-            switch (configuration.getUsedAlgorithm())
-            {
-                case boyerMoore: {
-                    algo = new BoyerMoore();
-                    break;
-                }
-                case knuthMorrisPratt: {
-                    algo = new KnuthMorrisPratt();
-                    break;
-                }
-                default: {
-                    throw new IllegalArgumentException();
-                }
+            if (configuration.getUsedAlgorithm() == SearchAlgorithm.boyerMoore) {
+                algo = new BoyerMoore();
+            } else if (configuration.getUsedAlgorithm() == SearchAlgorithm.knuthMorrisPratt) {
+                algo = new KnuthMorrisPratt();
+            } else {
+                throw new IllegalArgumentException();
             }
 
             final String knife = "kn!fe";
@@ -45,9 +38,6 @@ public class Scanner {
             else if((pos = algo.search(String.valueOf(content), explosive)) >= 0)  { result = new ScanResult(counter, pos, ProhibitedItem.EXPLOSIVE); }
 
             counter++;
-
-            if(result != null)
-                continue;
 
         }
 
