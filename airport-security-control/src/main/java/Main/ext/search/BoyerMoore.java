@@ -10,44 +10,55 @@ public class BoyerMoore implements IStringMatching {
         System.out.println("pattern : " + pattern);
         int position = boyerMoore.search(text, pattern);
 
-        if (position == -1) {
+        if (position == -1)
+        {
             System.out.println("pattern not found");
-        } else {
+        }
+        else
+        {
             System.out.println("pattern found at position : " + position);
         }
     }
 
-    public int search(String text, String pattern) {
+    public int search(String text, String pattern)
+    {
         int[] last = buildLast(pattern);
-        int n = text.length();
-        int m = pattern.length();
-        int i = m - 1;
+        int x = text.length();
+        int y = pattern.length();
+        int z = y - 1;
 
-        if (i > n - 1) {
+        if (z > x - 1) {
             return -1;
         }
 
-        int j = m - 1;
+        int j = y - 1;
 
         do {
-            if (pattern.charAt(j) == text.charAt(i)) {
-                if (j == 0) {
-                    return i;
-                } else {
-                    i--;
+            if (pattern.charAt(j) == text.charAt(z))
+            {
+                if (j == 0)
+                {
+                    return z;
+                }
+                else
+                {
+                    z--;
                     j--;
                 }
-            } else {
-                int lo = last[text.charAt(i)];
-                i = i + m - Math.min(j, 1 + lo);
-                j = m - 1;
             }
-        } while (i <= n - 1);
+            else
+            {
+                int lo = last[text.charAt(z)];
+                z = z + y - Math.min(j, 1 + lo);
+                j = y - 1;
+            }
+        } while (z <= x - 1);
 
         return -1;
     }
 
-    public int[] buildLast(String pattern) {
+    public int[] buildLast(String pattern)
+    {
         int[] last = new int[128];
 
         for (int i = 0; i < 128; i++) {
