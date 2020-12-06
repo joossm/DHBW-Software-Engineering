@@ -2,7 +2,7 @@ package Main.SimulationEmployee;
 
 import Main.Employee.IDCard;
 import Main.Employee.Inspector;
-import Main.Workspaces.OperationStation;
+import Main.Counter.OperationStation;
 import Main.Employee.Pin;
 
 import java.time.LocalDate;

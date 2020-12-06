@@ -2,7 +2,7 @@ package Main;
 
 import Main.Components.Scanner.ProhibitedItem;
 import Main.Components.Scanner.ScanResult;
-import Main.ext.text_search.BruteForce;
+import Main.ext.search.BruteForce;
 
 import java.util.Arrays;
 

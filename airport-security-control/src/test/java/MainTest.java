@@ -13,9 +13,9 @@ import Main.SimulationEmployee.ManualPostControlInspector;
 import Main.SimulationEmployee.OperationStationInspector;
 import Main.SimulationEmployee.RollerConveyorInspector;
 import Main.SimulationEmployee.SupervisorWorkspaceSupervisor;
-import Main.Workspaces.ManualPostControl;
-import Main.Workspaces.OperationStation;
-import Main.Workspaces.SupervisorWorkspace;
+import Main.Counter.ManualPostControl;
+import Main.Counter.OperationStation;
+import Main.Counter.SupervisorCounter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
@@ -42,7 +42,7 @@ public class MainTest
     RollerConveyor rollerConveyor;
     ExplosivesTraceDetector detector;
 
-    SupervisorWorkspace supervisorWorkspace;
+    SupervisorCounter supervisorWorkspace;
     SupervisorWorkspaceSupervisor supervisor;
 
     FederalPoliceStation federalPoliceStation;
@@ -83,7 +83,7 @@ public class MainTest
     private BS generateBaggageScanner(Track track01, Track track02) {
         return new BS(new Reader(),new Scanner(), new ScanRecorder(), track01, track02, new Belt(), new Configuration(SearchAlgorithm.boyerMoore));
     }
-    private SupervisorWorkspaceSupervisor generateSupervisor(SupervisorWorkspace supervisorWorkspace) {
+    private SupervisorWorkspaceSupervisor generateSupervisor(SupervisorCounter supervisorWorkspace) {
         var supervisorIDCard = new IDCard(5,
                 LocalDate.of(2030,1,1),
                 "***S***1234***",
@@ -338,7 +338,7 @@ public class MainTest
         rollerConveyor = new RollerConveyor(BS);
         detector = new ExplosivesTraceDetector();
 
-        supervisorWorkspace = new SupervisorWorkspace(BS);
+        supervisorWorkspace = new SupervisorCounter(BS);
         supervisor = generateSupervisor(supervisorWorkspace);
 
         federalPoliceStation = generateFederalPoliceStation();

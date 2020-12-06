@@ -1,7 +1,7 @@
 package Main.Employee;
 
 import Main.Components.Reader;
-import Main.Workspaces.Workspace;
+import Main.Counter.Counter;
 
 import java.time.LocalDate;
 
@@ -35,7 +35,7 @@ public abstract class Employee {
         return birthDate;
     }
 
-    public abstract Workspace getWorkspace();
+    public abstract Counter getWorkspace();
 
     public boolean auth(Reader reader, Pin enteredPin, EmployeeProfileType type) {
         var res = reader.checkCard(idCard, enteredPin, type);

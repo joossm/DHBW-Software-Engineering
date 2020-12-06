@@ -16,7 +16,6 @@ public class AES {
     public AES(String secretStr) {
         this.secretStr = secretStr;
     }
-
     public AES() {
         this.secretStr = "dhbw$20^20_";
     }
@@ -24,7 +23,6 @@ public class AES {
     public String decrypt(String encryptedMessage) {
         return decrypt(encryptedMessage, secretStr);
     }
-
     public String encrypt(String plainMessage) {
         return encrypt(plainMessage, secretStr);
     }

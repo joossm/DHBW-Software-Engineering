@@ -1,9 +1,9 @@
 package Main.Components.Scanner;
 
 import Main.Passenger.Baggage;
-import Main.ext.text_search.BoyerMoore;
-import Main.ext.text_search.IStringMatching;
-import Main.ext.text_search.KnuthMorrisPratt;
+import Main.ext.search.BoyerMoore;
+import Main.ext.search.IStringMatching;
+import Main.ext.search.KnuthMorrisPratt;
 
 public class Scanner {
 

@@ -3,15 +3,15 @@ package Main.SimulationEmployee;
 import Main.Employee.IDCard;
 import Main.Employee.Supervisor;
 import Main.Employee.Pin;
-import Main.Workspaces.SupervisorWorkspace;
+import Main.Counter.SupervisorCounter;
 
 import java.time.LocalDate;
 
 public class SupervisorWorkspaceSupervisor extends Supervisor {
 
-    private SupervisorWorkspace workspace;
+    private SupervisorCounter workspace;
 
-    public SupervisorWorkspaceSupervisor(int id, String name, LocalDate birthDate, IDCard idCard, boolean isSenior, boolean isExecutive, SupervisorWorkspace workspace) {
+    public SupervisorWorkspaceSupervisor(int id, String name, LocalDate birthDate, IDCard idCard, boolean isSenior, boolean isExecutive, SupervisorCounter workspace) {
         super(id, name, birthDate, idCard, isSenior, isExecutive);
 
         this.workspace = workspace;
@@ -28,7 +28,7 @@ public class SupervisorWorkspaceSupervisor extends Supervisor {
     }
 
 
-    public SupervisorWorkspace getWorkspace() {
+    public SupervisorCounter getWorkspace() {
         return workspace;
     }
 }

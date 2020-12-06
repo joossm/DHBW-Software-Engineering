@@ -6,7 +6,7 @@ import Main.Components.Tray;
 import Main.Employee.IDCard;
 import Main.Employee.Inspector;
 import Main.Passenger.Passenger;
-import Main.Workspaces.ManualPostControl;
+import Main.Counter.ManualPostControl;
 
 import java.time.LocalDate;
 
