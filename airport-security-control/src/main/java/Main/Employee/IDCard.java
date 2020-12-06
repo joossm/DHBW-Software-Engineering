@@ -46,7 +46,8 @@ public class IDCard {
         return type;
     }
 
-    public void wrongPinEntered() {
+    public void wrongPinEntered()
+    {
         wrongPinCounter++;
     }
 
