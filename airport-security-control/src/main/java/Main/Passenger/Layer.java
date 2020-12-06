@@ -18,10 +18,12 @@ public class Layer {
     {
         return content;
     }
+
     public void setContent(char[] content)
     {
         this.content = content;
     }
+
     public void rewriteFromPos(int pos, char[] str) {
         System.arraycopy(str, 0, content, pos, pos + str.length - pos);
     }

@@ -12,11 +12,7 @@ public class RollerConveyor extends Counter {
 
     public RollerConveyor(BS BS) {
         super(BS);
-        trays = new LinkedList<Tray>();
-    }
-
-    public boolean isEmpty() {
-        return trays.isEmpty();
+        trays = new LinkedList<>();
     }
 
     public void push() {

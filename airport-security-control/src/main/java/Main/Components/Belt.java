@@ -8,11 +8,6 @@ public class Belt
     private Tray current;
 
 
-    protected void setIncoming(Tray incoming)
-    {
-        this.incoming = incoming;
-    }
-
     public Tray getCurrent()
     {
         return current;
@@ -37,15 +32,6 @@ public class Belt
         var temp = incoming;
         incoming = null;
         return temp;
-    }
-
-    public void setCurrentTray(Tray tray)
-    {
-        if(current != null)
-        {
-            throw new RuntimeException();
-        }
-        current = tray;
     }
 
     public Tray removeCurrentTray() {
