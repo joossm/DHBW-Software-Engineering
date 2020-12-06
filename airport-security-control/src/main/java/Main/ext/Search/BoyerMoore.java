@@ -1,4 +1,4 @@
-package Main.ext.search;
+package Main.ext.Search;
 
 public class BoyerMoore implements IStringMatching {
     public static void main(String... args) {
