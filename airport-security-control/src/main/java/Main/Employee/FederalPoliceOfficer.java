@@ -3,6 +3,7 @@ package Main.Employee;
 import Main.Components.Scanner.ProhibitedItem;
 import Main.Components.Scanner.ScanResult;
 import Main.Components.Tray;
+import Main.Counter.Counter;
 import Main.ExplosivesTraceDetector;
 import Main.FederalPoliceStation;
 import Main.Passenger.DestroyedBaggage;
@@ -11,7 +12,6 @@ import Main.Passenger.Passenger;
 import Main.Robot;
 import Main.SimulationEmployee.SupervisorWorkspaceSupervisor;
 import Main.TestStripe;
-import Main.Workspaces.Workspace;
 
 import java.time.LocalDate;
 
@@ -99,7 +99,7 @@ public class FederalPoliceOfficer extends Employee {
     }
 
     @Override
-    public Workspace getWorkspace() {
+    public Counter getWorkspace() {
         return null;
     }
 

@@ -56,7 +56,7 @@ public class BS {
         this.scannerConfiguration = scannerConfiguration;
     }
 
-    public boolean alarm(Employee e) {
+    public boolean alarm(Employee e) throws Exception {
         if (e.auth(reader, EmployeeProfileType.I))
             if (getState() != BSStatus.DEACTIVATED && getState() != BSStatus.SHUTDOWN) {
                 setState(BSStatus.LOCKED);
@@ -66,15 +66,15 @@ public class BS {
         return false;
     }
 
-    public boolean report(Employee e) {
+    public boolean report(Employee e) throws Exception {
         return e.auth(reader, EmployeeProfileType.S);
     }
 
-    public void maintenance(Employee e) {
+    public void maintenance(Employee e) throws Exception {
         e.auth(reader, EmployeeProfileType.T);
     }
 
-    public boolean start(Employee e) {
+    public boolean start(Employee e) throws Exception {
         if (e.auth(reader, EmployeeProfileType.S)) {
             if (getState() == BSStatus.SHUTDOWN) {
                 setState(BSStatus.DEACTIVATED);
@@ -85,7 +85,7 @@ public class BS {
         return false;
     }
 
-    public boolean shutdown(Employee e) {
+    public boolean shutdown(Employee e) throws Exception {
         if (e.auth(reader, EmployeeProfileType.S)) {
             if (getState() != BSStatus.LOCKED) {
                 setState(BSStatus.SHUTDOWN);
@@ -96,7 +96,7 @@ public class BS {
         return false;
     }
 
-    public boolean unlock(Employee e, Pin pin) {
+    public boolean unlock(Employee e, Pin pin) throws Exception {
         if (e.auth(reader, pin, EmployeeProfileType.S)) {
             if (getState() == BSStatus.LOCKED) {
                 setState(BSStatus.ACTIVATED);
@@ -107,7 +107,7 @@ public class BS {
         return false;
     }
 
-    public boolean activate(Employee e, Pin pin) {
+    public boolean activate(Employee e, Pin pin) throws Exception {
         if (getState() == BSStatus.DEACTIVATED && e.auth(reader, pin, EmployeeProfileType.I)) {
             setState(BSStatus.ACTIVATED);
             return true;
@@ -116,7 +116,7 @@ public class BS {
         }
     }
 
-    public boolean scan(Employee e) {
+    public boolean scan(Employee e) throws Exception {
         if (e.auth(reader, EmployeeProfileType.I)) {
 
             ScanResult result = null;
@@ -161,21 +161,17 @@ public class BS {
         track02.addTray(tray);
     }
 
-    public boolean forwardTrays(Employee e) {
+    public void forwardTrays(Employee e) throws Exception {
         if (e.auth(reader, EmployeeProfileType.I)) {
             belt.forwardTrays();
-            return true;
         }
-        return false;
     }
 
-    public boolean backwardTrays(Employee e) {
+    public void backwardTrays(Employee e) throws Exception {
         if (e.auth(reader, EmployeeProfileType.I)) {
             belt.backwardTrays();
-            return true;
         }
 
-        return false;
     }
 
     public void setOutgoingTray(Tray tray) {

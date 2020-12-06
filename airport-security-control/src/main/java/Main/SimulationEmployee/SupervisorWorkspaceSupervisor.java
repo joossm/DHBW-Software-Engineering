@@ -17,13 +17,13 @@ public class SupervisorWorkspaceSupervisor extends Supervisor {
         this.workspace = workspace;
     }
 
-    public boolean unlockBaggageScanner(Pin enteredPin) {
+    public boolean unlockBaggageScanner(Pin enteredPin) throws Exception {
         return getWorkspace().unlockBaggageScanner(this, getIDCard(), enteredPin);
     }
-    public boolean pressButtonStartBaggageScanner() {
+    public boolean pressButtonStartBaggageScanner() throws Exception {
         return getWorkspace().onButtonStartBaggageScannerClicked(this);
     }
-    public boolean pressButtonShutdownBaggageScanner() {
+    public boolean pressButtonShutdownBaggageScanner() throws Exception {
         return getWorkspace().onButtonShutdownBaggageScannerClicked(this);
     }
 

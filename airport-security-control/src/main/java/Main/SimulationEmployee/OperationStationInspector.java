@@ -17,21 +17,17 @@ public class OperationStationInspector extends Inspector {
         this.operationStation = operationStation;
     }
 
-    public boolean activateBaggageScanner(Pin pin)
-    {
+    public boolean activateBaggageScanner(Pin pin) throws Exception {
         return operationStation.activateBaggageScanner(this, pin);
     }
 
-    public void clickButtonLeft()
-    {
+    public void clickButtonLeft() throws Exception {
         operationStation.backwardTrays(this);
     }
-    public boolean clickButtonRect()
-    {
+    public boolean clickButtonRect() throws Exception {
         return operationStation.scan(this);
     }
-    public void clickButtonRight()
-    {
+    public void clickButtonRight() throws Exception {
         operationStation.forwardTrays(this);
     }
 
@@ -45,7 +41,7 @@ public class OperationStationInspector extends Inspector {
         //TODO sinnlose Funktion
     }
 
-    public boolean activateAlarm() {
+    public boolean activateAlarm() throws Exception {
         return operationStation.activateAlarm(this);
     }
 }

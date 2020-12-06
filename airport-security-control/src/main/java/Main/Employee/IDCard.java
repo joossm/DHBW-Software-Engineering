@@ -1,6 +1,6 @@
 package Main.Employee;
 
-import Main.Utils.AES;
+import Main.Utils.AdvancedEncryptionStandard;
 
 import java.time.LocalDate;
 
@@ -12,12 +12,12 @@ public class IDCard {
     private final LocalDate validUntil;
     private int wrongPinCounter;
 
-    public IDCard(int id, LocalDate validUntil, String magnetStripe, IDCardType type) {
+    public IDCard(int id, LocalDate validUntil, String magnetStripe, IDCardType type) throws Exception {
         this.id = id;
         this.validUntil = validUntil;
 
-        AES aes = new AES();
-        this.magnetStripe = aes.encrypt(magnetStripe);
+        AdvancedEncryptionStandard advancedEncryptionStandard = new AdvancedEncryptionStandard();
+        this.magnetStripe = advancedEncryptionStandard.encrypt(magnetStripe);
         this.type = type;
     }
 

@@ -12,15 +12,15 @@ public class SupervisorCounter extends Counter {
         super(BS);
     }
 
-    public boolean unlockBaggageScanner(Employee employee, IDCard idCard, Pin pin) {
+    public boolean unlockBaggageScanner(Employee employee, IDCard idCard, Pin pin) throws Exception {
         return getBaggageScanner().unlock(employee, pin);
     }
 
-    public boolean onButtonStartBaggageScannerClicked(Employee e) {
+    public boolean onButtonStartBaggageScannerClicked(Employee e) throws Exception {
         return getBaggageScanner().start(e);
     }
 
-    public boolean onButtonShutdownBaggageScannerClicked(Employee e) {
+    public boolean onButtonShutdownBaggageScannerClicked(Employee e) throws Exception {
         return getBaggageScanner().shutdown(e);
     }
 }

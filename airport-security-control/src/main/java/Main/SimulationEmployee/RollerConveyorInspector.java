@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 public class RollerConveyorInspector extends Inspector {
 
-    private RollerConveyor rollerConveyor;
+    private final RollerConveyor rollerConveyor;
     public RollerConveyorInspector(int id, String name, LocalDate birthDate, IDCard idCard, boolean isSenior, RollerConveyor rollerConveyor) {
         super(id, name, birthDate, idCard, isSenior);
 
