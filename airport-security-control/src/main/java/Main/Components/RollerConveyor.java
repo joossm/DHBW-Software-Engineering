@@ -14,7 +14,6 @@ public class RollerConveyor extends Counter {
         super(BS);
         trays = new LinkedList<>();
     }
-
     public void push() {
         getBaggageScanner().setIncomingTray(trays.poll());
     }

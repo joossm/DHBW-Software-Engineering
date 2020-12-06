@@ -21,6 +21,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
+
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -61,8 +63,8 @@ public class MainTest {
     private SupervisorWorkspaceSupervisor generateSupervisor(SupervisorCounter supervisorWorkspace) throws Exception {
         var supervisorIDCard = new IDCard(5,
                 LocalDate.of(2030, 1, 1),
-                "***S***1234***",
-                IDCardType.staff);
+                "***S***1234***"
+        );
 
         return new SupervisorWorkspaceSupervisor(1,
                 "Jodie Foster",
@@ -78,13 +80,13 @@ public class MainTest {
         federalPoliceStation.addOfficer(new FederalPoliceOfficer(19,
                 "Toto",
                 LocalDate.of(1969, 1, 1),
-                new IDCard(20, LocalDate.of(2030, 1, 1), "***O***1234***", IDCardType.staff),
+                new IDCard(20, LocalDate.of(2030, 1, 1), "***O***1234***"),
                 5,
                 federalPoliceStation));
         federalPoliceStation.addOfficer(new FederalPoliceOfficer(23,
                 "Harry",
                 LocalDate.of(1969, 1, 1),
-                new IDCard(20, LocalDate.of(2030, 1, 1), "***O***1234***", IDCardType.staff),
+                new IDCard(20, LocalDate.of(2030, 1, 1), "***O***1234***"),
                 5,
                 federalPoliceStation));
 
@@ -94,8 +96,8 @@ public class MainTest {
     private OperationStationInspector generateOperationStationInspector(OperationStation operationStation) throws Exception {
         var inspectorI2IDCard = new IDCard(8,
                 LocalDate.of(2030, 1, 1),
-                "***I***1234***",
-                IDCardType.staff);
+                "***I***1234***"
+        );
 
         return new OperationStationInspector(2,
                 "Natalie Portman",
@@ -108,8 +110,8 @@ public class MainTest {
     private ManualPostControlInspector generateManualPostControlInspector(ManualPostControl manualPostControl) throws Exception {
         var idCard = new IDCard(8,
                 LocalDate.of(2030, 1, 1),
-                "***I***1234***",
-                IDCardType.staff);
+                "***I***1234***"
+        );
 
         return new ManualPostControlInspector(4,
                 "Bruce Willis",
@@ -123,8 +125,8 @@ public class MainTest {
 
         var idCard = new IDCard(8,
                 LocalDate.of(2030, 1, 1),
-                "***O***1234***",
-                IDCardType.staff);
+                "***O***1234***"
+        );
 
         return new FederalPoliceOfficer(4,
                 "Wesley Snipes",
@@ -136,8 +138,8 @@ public class MainTest {
 
         var idCard = new IDCard(8,
                 LocalDate.of(2030, 1, 1),
-                "***I***1234***",
-                IDCardType.staff);
+                "***I***1234***"
+        );
 
         return new RollerConveyorInspector(4,
                 "Clint Eastwood",
@@ -151,8 +153,8 @@ public class MainTest {
 
         var idCard = new IDCard(666,
                 LocalDate.of(2030, 1, 1),
-                "***T***1234***",
-                IDCardType.staff);
+                "***T***1234***"
+        );
 
         return new Technician(4,
                 "Jasen Statham",

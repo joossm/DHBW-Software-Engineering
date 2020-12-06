@@ -35,26 +35,9 @@ public class FederalPoliceOfficer extends Employee {
     }
 
     public TestStripe swipe(Baggage baggage) {
-
-        dummyTestStripe();
-
         return new TestStripe(new char[30][10]);
     }
 
-    private static void dummyTestStripe() {
-
-        var data = "0123456789".toCharArray();
-
-        char[][] chars;
-        chars = new char[30][10];
-
-        chars[0] = "000exp0000".toCharArray();
-
-        for (var i = 1; i < chars.length; i++) {
-            chars[i] = data;
-        }
-
-    }
 
     public void checkTestStripeWithDetector(TestStripe teststripe, ExplosivesTraceDetector detector) {
         detector.test(teststripe);
@@ -65,15 +48,10 @@ public class FederalPoliceOfficer extends Employee {
         if (result.getType() != ProhibitedItem.WEAPON_GLOCK7) {
             throw new IllegalArgumentException();
         }
-
         var layer = baggage.getLayers()[result.getLayer()];
-
-
         layer.rewriteFromPos(result.getPosition(), "000000000000000");
         baggage.setLayer(result.getLayer(), layer);
-
         removeTray.setBaggage(baggage);
-
     }
 
     public void releasePassenger() {

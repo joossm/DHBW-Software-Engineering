@@ -7,8 +7,6 @@ import Main.ext.Search.KnuthMorrisPratt;
 
 public class Scanner {
 
-
-
     public ScanResult scan(Baggage baggage, Configuration configuration) throws IllegalArgumentException {
         ScanResult result = null;
 

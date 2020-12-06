@@ -11,7 +11,7 @@ public class IDCard {
     private final LocalDate validUntil;
     private int wrongPinCounter;
 
-    public IDCard(int id, LocalDate validUntil, String magnetStripe, IDCardType type) throws Exception {
+    public IDCard(int id, LocalDate validUntil, String magnetStripe) throws Exception {
         this.id = id;
         this.validUntil = validUntil;
 
