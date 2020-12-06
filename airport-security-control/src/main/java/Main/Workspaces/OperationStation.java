@@ -1,16 +1,14 @@
 package Main.Workspaces;
 
-import Main.Components.BaggageScanner.BaggageScanner;
+import Main.Components.BaggageScanner.BS;
 import Main.Employee.Employee;
-import Main.Employee.IDCard;
 import Main.Employee.Pin;
-import Main.Components.Reader;
 import Main.SimulationEmployee.OperationStationInspector;
 
 public class OperationStation extends Workspace {
 
-    public OperationStation(BaggageScanner baggageScanner) {
-        super(baggageScanner);
+    public OperationStation(BS BS) {
+        super(BS);
     }
 
     public boolean activateBaggageScanner(Employee e, Pin pin) {
@@ -25,8 +23,8 @@ public class OperationStation extends Workspace {
         return getBaggageScanner().scan(e);
     }
 
-    public boolean backwardTrays(OperationStationInspector e) {
-        return getBaggageScanner().backwardTrays(e);
+    public void backwardTrays(OperationStationInspector e) {
+        getBaggageScanner().backwardTrays(e);
     }
 
     public boolean activateAlarm(OperationStationInspector e) {

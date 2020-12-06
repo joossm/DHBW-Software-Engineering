@@ -1,15 +1,15 @@
 package Main.Workspaces;
 
-import Main.Components.BaggageScanner.BaggageScanner;
+import Main.Components.BaggageScanner.BS;
 
 public abstract class Workspace {
-    public Workspace(BaggageScanner baggageScanner) {
-        this.baggageScanner = baggageScanner;
+    public Workspace(BS BS) {
+        this.BS = BS;
     }
 
-    public BaggageScanner getBaggageScanner() {
-        return baggageScanner;
+    public BS getBaggageScanner() {
+        return BS;
     }
 
-    private BaggageScanner baggageScanner;
+    private final BS BS;
 }

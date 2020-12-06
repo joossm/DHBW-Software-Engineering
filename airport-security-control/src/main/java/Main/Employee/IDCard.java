@@ -24,24 +24,28 @@ public class IDCard {
     public String getMagnetStripe() {
         return magnetStripe;
     }
+
     public int getId() {
         return id;
     }
+
     public LocalDate getValidUntil() {
         return validUntil;
     }
+
     public boolean isLocked() {
         return wrongPinCounter >= 3;
     }
+
     public IDCardType getType() {
         return type;
     }
-    public void wrongPinEntered()
-    {
+
+    public void wrongPinEntered() {
         wrongPinCounter++;
     }
-    public void resetWrongPinCounter()
-    {
+
+    public void resetWrongPinCounter() {
         wrongPinCounter = 0;
     }
 }

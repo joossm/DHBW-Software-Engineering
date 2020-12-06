@@ -1,7 +1,5 @@
 package Main.Employee;
 
-import Main.Components.Reader;
-
 import java.time.LocalDate;
 
 public abstract class Inspector extends Employee {
@@ -11,6 +9,7 @@ public abstract class Inspector extends Employee {
         super(id, name, birthDate, idCard);
         this.isSenior = isSenior;
     }
+
     public boolean isSenior() {
         return isSenior;
     }

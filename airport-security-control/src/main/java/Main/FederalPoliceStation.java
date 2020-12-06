@@ -11,7 +11,7 @@ public class FederalPoliceStation {
     List<Roboter> roboters;
 
     public FederalPoliceStation() {
-        roboters = new ArrayList<>(Arrays.asList(new Roboter(),new Roboter(), new Roboter()));
+        roboters = new ArrayList<>(Arrays.asList(new Roboter(), new Roboter(), new Roboter()));
         officers = new LinkedList<>();
     }
 

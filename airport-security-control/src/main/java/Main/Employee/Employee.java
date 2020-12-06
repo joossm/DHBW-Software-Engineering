@@ -12,9 +12,7 @@ public abstract class Employee {
     private final IDCard idCard;
 
 
-
-    public Employee(int id, String name, LocalDate birthDate, IDCard idCard)
-    {
+    public Employee(int id, String name, LocalDate birthDate, IDCard idCard) {
         this.id = id;
         this.name = name;
         this.birthDate = birthDate;
@@ -40,17 +38,18 @@ public abstract class Employee {
     public abstract Workspace getWorkspace();
 
     public boolean auth(Reader reader, Pin enteredPin, EmployeeProfileType type) {
-        var res = reader.checkCard(idCard,enteredPin, type);
-        if(res)  {
+        var res = reader.checkCard(idCard, enteredPin, type);
+        if (res) {
             idCard.resetWrongPinCounter();
         } else {
             idCard.wrongPinEntered();
         }
         return res;
     }
+
     public boolean auth(Reader reader, EmployeeProfileType type) {
         var res = reader.checkCard(idCard, type);
-        if(res)  {
+        if (res) {
             idCard.resetWrongPinCounter();
         } else {
             idCard.wrongPinEntered();

@@ -1,15 +1,16 @@
 package Main.Components;
 
-import Main.Passanger.HandBaggage;
+import Main.Passenger.Baggage;
 
 public class Tray {
 
-    private HandBaggage handBaggage;
+    private Baggage baggage;
 
-    public HandBaggage getHandBaggage() {
-        return handBaggage;
+    public Baggage getHandBaggage() {
+        return baggage;
     }
-    public void setHandBaggage(HandBaggage handbaggage) {
-        this.handBaggage = handbaggage;
+
+    public void setHandBaggage(Baggage handbaggage) {
+        this.baggage = handbaggage;
     }
 }

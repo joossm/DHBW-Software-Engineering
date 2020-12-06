@@ -1,6 +1,7 @@
 package Main.Components;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Track {
 
@@ -10,10 +11,12 @@ public class Track {
         trays = new LinkedList<>() {
         };
     }
-    public void addTray(Tray tray){
+
+    public void addTray(Tray tray) {
         trays.add(tray);
     }
-    public Tray removeTray(){
+
+    public Tray removeTray() {
         return trays.poll();
     }
 }

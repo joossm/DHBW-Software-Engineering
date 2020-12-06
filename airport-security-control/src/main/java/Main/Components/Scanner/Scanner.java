@@ -1,6 +1,6 @@
 package Main.Components.Scanner;
 
-import Main.Passanger.HandBaggage;
+import Main.Passenger.Baggage;
 import Main.ext.text_search.BoyerMoore;
 import Main.ext.text_search.IStringMatching;
 import Main.ext.text_search.KnuthMorrisPratt;
@@ -9,7 +9,7 @@ public class Scanner {
 
 
 
-    public ScanResult scan(HandBaggage baggage, Configuration configuration) throws IllegalArgumentException {
+    public ScanResult scan(Baggage baggage, Configuration configuration) throws IllegalArgumentException {
         ScanResult result = null;
 
         var counter = 0;

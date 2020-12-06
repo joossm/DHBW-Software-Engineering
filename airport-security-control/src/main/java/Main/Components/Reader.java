@@ -10,16 +10,16 @@ public class Reader {
     private static final int PROFILE_TYPE_POSITION = 3;
 
     public boolean checkInspectorCard(IDCard idCard, Pin pin) {
-        return checkCard(idCard,pin,EmployeeProfileType.I);
+        return checkCard(idCard, pin, EmployeeProfileType.I);
     }
 
     public boolean checkCard(IDCard idCard, Pin pin, EmployeeProfileType type) {
-        return checkCard(idCard,type) && checkPin(idCard, pin);
+        return checkCard(idCard, type) && checkPin(idCard, pin);
     }
 
     public boolean checkCard(IDCard idCard, EmployeeProfileType type) {
         return !checkIDCardExpired(idCard) && !idCard.isLocked() &&
-                checkProfileType(idCard,type);
+                checkProfileType(idCard, type);
     }
 
     private static String decryptMagnetStripe(String magnetStripe) {
@@ -27,30 +27,24 @@ public class Reader {
         return aes.decrypt(magnetStripe);
     }
 
-    private static boolean checkPin(IDCard card, Pin expected)
-    {
+    private static boolean checkPin(IDCard card, Pin expected) {
         var stripe = decryptMagnetStripe(card.getMagnetStripe());
-        var pin = stripe.substring(7,stripe.length() - 3);
+        var pin = stripe.substring(7, stripe.length() - 3);
 
-        if(pin.equals(expected.getPin()))
-        {
+        if (pin.equals(expected.getPin())) {
             //card.resetWrongPinCounter();
             return true;
-        }
-        else
-        {
+        } else {
             //card.wrongPinEntered();
             return false;
         }
     }
 
-    private static boolean checkIDCardExpired(IDCard card)
-    {
+    private static boolean checkIDCardExpired(IDCard card) {
         return card.getValidUntil().toEpochDay() < java.time.LocalDate.now().toEpochDay();
     }
 
-    private static boolean checkProfileType(IDCard card, EmployeeProfileType expected)
-    {
+    private static boolean checkProfileType(IDCard card, EmployeeProfileType expected) {
         var encrypted = decryptMagnetStripe(card.getMagnetStripe());
         try {
             var ret = extractProfileTypeFromMagnetStripe(encrypted) == expected;

@@ -1,14 +1,14 @@
 import Main.*;
 import Main.Components.*;
-import Main.Components.BaggageScanner.BaggageScanner;
+import Main.Components.BaggageScanner.BS;
 import Main.Components.Reader;
 import Main.Components.Scanner.*;
 import Main.Components.Scanner.Recorder.ScanRecorder;
 import Main.Employee.*;
-import Main.Passanger.DestroyedHandBaggage;
-import Main.Passanger.HandBaggage;
-import Main.Passanger.Layer;
-import Main.Passanger.Passenger;
+import Main.Passenger.DestroyedBaggage;
+import Main.Passenger.Baggage;
+import Main.Passenger.Layer;
+import Main.Passenger.Passenger;
 import Main.SimulationEmployee.ManualPostControlInspector;
 import Main.SimulationEmployee.OperationStationInspector;
 import Main.SimulationEmployee.RollerConveyorInspector;
@@ -22,7 +22,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestFactory;
 
 import java.io.InputStream;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,7 +38,7 @@ public class MainTest
 
     Track track01;
     Track track02;
-    BaggageScanner baggageScanner;
+    BS BS;
     RollerConveyor rollerConveyor;
     ExplosivesTraceDetector detector;
 
@@ -63,8 +62,8 @@ public class MainTest
 
         for (var k = 0; k < passengers.length; k++) {
 
-            HandBaggage[] b;
-            b = new HandBaggage[3];
+            Baggage[] b;
+            b = new Baggage[3];
 
             for (var i = 0; i < b.length; i++) {
                 Layer[] l;
@@ -73,7 +72,7 @@ public class MainTest
                     l[y] = new Layer(new char[10000]);
                 }
 
-                b[i] = new HandBaggage(l);
+                b[i] = new Baggage(l);
             }
 
             passengers[k] = new Passenger("Reiner Kalmund", b);
@@ -81,8 +80,8 @@ public class MainTest
 
         return passengers;
     }
-    private BaggageScanner generateBaggageScanner(Track track01, Track track02) {
-        return new BaggageScanner(new Reader(),new Scanner(), new ScanRecorder(), track01, track02, new Belt(), new Configuration(SearchAlgorithm.boyerMoore));
+    private BS generateBaggageScanner(Track track01, Track track02) {
+        return new BS(new Reader(),new Scanner(), new ScanRecorder(), track01, track02, new Belt(), new Configuration(SearchAlgorithm.boyerMoore));
     }
     private SupervisorWorkspaceSupervisor generateSupervisor(SupervisorWorkspace supervisorWorkspace) {
         var supervisorIDCard = new IDCard(5,
@@ -210,7 +209,7 @@ public class MainTest
 
         return data;
     }
-    private HandBaggage generateRandomHandBaggage() {
+    private Baggage generateRandomHandBaggage() {
         Layer[] layers = new Layer[3];
 
         for(var i = 0; i < layers.length; i++) {
@@ -218,10 +217,10 @@ public class MainTest
             layers[i] = new Layer(generateRandomData(10000));
         }
 
-        return new HandBaggage(layers);
+        return new Baggage(layers);
     }
-    private HandBaggage[] generateRandomHandBaggage(int num) {
-        HandBaggage[] baggages = new HandBaggage[num];
+    private Baggage[] generateRandomHandBaggage(int num) {
+        Baggage[] baggages = new Baggage[num];
         for(var i = 0; i < baggages.length; i++) {
             baggages[i] = generateRandomHandBaggage();
         }
@@ -235,7 +234,7 @@ public class MainTest
         var baggageAmount = Integer.parseInt(splitted[1]);
         var props = splitted[2];
 
-        HandBaggage[] baggages = generateRandomHandBaggage(baggageAmount);
+        Baggage[] baggages = generateRandomHandBaggage(baggageAmount);
 
 
         if(!props.equals("-")) {
@@ -304,16 +303,16 @@ public class MainTest
 
         return ret;
     }
-    private DestroyedHandBaggage processOnExplosiveFound(Tray tray, FederalPoliceOfficer policeOfficer02, FederalPoliceOfficer policeOfficer03) {
+    private DestroyedBaggage processOnExplosiveFound(Tray tray, FederalPoliceOfficer policeOfficer02, FederalPoliceOfficer policeOfficer03) {
         Roboter roboter = policeOfficer01.callRoboter();
         policeOfficer02.controlRoboter(roboter);
 
         TestStripe teststripe = policeOfficer03.swipe(tray.getHandBaggage());
         var resultDetector = policeOfficer03.checkTestStripeWithDetector(teststripe, detector);
 
-        DestroyedHandBaggage destroyedHandBaggage = policeOfficer02.destroy(tray.getHandBaggage());
+        DestroyedBaggage destroyedBaggage = policeOfficer02.destroy(tray.getHandBaggage());
 
-        return destroyedHandBaggage;
+        return destroyedBaggage;
     }
     private void processOnKnifeFound(Tray tray, Passenger passenger, ScanResult result) {
         inspectorI2.contact(inspectorI3);
@@ -321,9 +320,9 @@ public class MainTest
         inspectorI3.putTrayToBaggageScannerExit(removedTray);
         inspectorI2.clickButtonLeft(); //back Into scanner
     }
-    private Passenger returnHandBaggageToPassanger(Passenger passenger, List<HandBaggage> scannedBaggage) {
+    private Passenger returnHandBaggageToPassanger(Passenger passenger, List<Baggage> scannedBaggage) {
         for ( var hb : scannedBaggage) {
-            passenger.addHandBaggage(hb);
+            passenger.addBaggage(hb);
         }
         return passenger;
     }
@@ -335,20 +334,20 @@ public class MainTest
     private void init() {
         track01 = new Track();
         track02 = new Track();
-        baggageScanner = generateBaggageScanner(track01, track02);
-        rollerConveyor = new RollerConveyor(baggageScanner);
+        BS = generateBaggageScanner(track01, track02);
+        rollerConveyor = new RollerConveyor(BS);
         detector = new ExplosivesTraceDetector();
 
-        supervisorWorkspace = new SupervisorWorkspace(baggageScanner);
+        supervisorWorkspace = new SupervisorWorkspace(BS);
         supervisor = generateSupervisor(supervisorWorkspace);
 
         federalPoliceStation = generateFederalPoliceStation();
 
-        operationStation = new OperationStation(baggageScanner);
+        operationStation = new OperationStation(BS);
 
         inspectorI2 = generateOperationStationInspector(operationStation);
         inspectorI1 = generateRollerConveyorInspector(rollerConveyor);
-        inspectorI3 = generateManualPostControlInspector(new ManualPostControl(baggageScanner));
+        inspectorI3 = generateManualPostControlInspector(new ManualPostControl(BS));
         policeOfficer01 = generateFederalPoliceOfficer01(federalPoliceStation);
 
         technician = generateTechnician();
@@ -385,9 +384,9 @@ public class MainTest
                                 int id = passengers.indexOf(passenger);
                                 assertEquals(passenger.getName(), names.get(id));
 
-                                for (var i = 0; i < passenger.getHandbaggages().length; i++) {
+                                for (var i = 0; i < passenger.getBaggages().length; i++) {
 
-                                    var curBaggage = passenger.getHandbaggages()[i];
+                                    var curBaggage = passenger.getBaggages()[i];
 
                                     Tray t = new Tray();
                                     t.setHandBaggage(curBaggage);
@@ -398,7 +397,7 @@ public class MainTest
 
                                     inspectorI2.clickButtonRect();
 
-                                    var result = baggageScanner.getCurrentScanResult();
+                                    var result = BS.getCurrentScanResult();
 
                                     var c = baggageCounter.getAndIncrement();
 
@@ -406,7 +405,7 @@ public class MainTest
                                     assertEquals(scanResults.get(c).getLayer(), result.getLayer());
                                     assertEquals(scanResults.get(c).getPosition(), result.getPosition());
 
-                                    var scanRecorder = baggageScanner.getScanRecorder();
+                                    var scanRecorder = BS.getScanRecorder();
                                     var records = scanRecorder.getRecords();
                                     assertEquals(c + 1, records.size());
 
@@ -443,7 +442,7 @@ public class MainTest
         return passengers.stream()
                 .map(passenger -> DynamicTest.dynamicTest("Checking passenger: " + passenger.getName(),
                         () -> {int id = passengers.indexOf(passenger);
-                            assertEquals(passenger.getHandbaggages().length, outputList.get(id));
+                            assertEquals(passenger.getBaggages().length, outputList.get(id));
                         }));
     }
 
@@ -462,7 +461,7 @@ public class MainTest
 
     @Test
     public void checkProfileOBaggageScanner() {
-        assertFalse(baggageScanner.activate(policeOfficer01, new Pin("1234")));
+        assertFalse(BS.activate(policeOfficer01, new Pin("1234")));
     }
 
     @Test
@@ -470,13 +469,13 @@ public class MainTest
         startBaggageScannerRoutine();
         assertTrue(inspectorI2.activateAlarm()); //lock
 
-        assertFalse(baggageScanner.unlock(inspectorI1,new Pin("1234")));
-        assertFalse(baggageScanner.unlock(inspectorI2,new Pin("1234")));
-        assertFalse(baggageScanner.unlock(inspectorI3,new Pin("1234")));
-        assertFalse(baggageScanner.unlock(policeOfficer01,new Pin("1234")));
-        assertFalse(baggageScanner.unlock(technician,new Pin("1234")));
+        assertFalse(BS.unlock(inspectorI1,new Pin("1234")));
+        assertFalse(BS.unlock(inspectorI2,new Pin("1234")));
+        assertFalse(BS.unlock(inspectorI3,new Pin("1234")));
+        assertFalse(BS.unlock(policeOfficer01,new Pin("1234")));
+        assertFalse(BS.unlock(technician,new Pin("1234")));
 
-        assertTrue(baggageScanner.unlock(supervisor,new Pin("1234")));
+        assertTrue(BS.unlock(supervisor,new Pin("1234")));
     }
 
 
@@ -545,9 +544,9 @@ public class MainTest
        startBaggageScannerRoutine();
 
         for ( Passenger passenger : passengers ) {
-            HandBaggage baggage;
-            List<HandBaggage> scannedBaggage = new ArrayList<HandBaggage>();
-            while ((baggage = passenger.getNextHandBaggage()) != null) {
+            Baggage baggage;
+            List<Baggage> scannedBaggage = new ArrayList<Baggage>();
+            while ((baggage = passenger.getNextBaggage()) != null) {
                 Tray t = new Tray();
                 t.setHandBaggage(baggage);
                 rollerConveyor.addTray(t);
@@ -562,7 +561,7 @@ public class MainTest
                     var scanWorked = inspectorI2.clickButtonRect(); //scan
                     assertEquals(scanWorked,true);
 
-                    var result = baggageScanner.getCurrentScanResult();
+                    var result = BS.getCurrentScanResult();
 
                     Tray tray = null;
 
@@ -639,7 +638,7 @@ public class MainTest
                         }
                     }
 
-                } while (!baggageScanner.getCurrentScanResult().isClean());
+                } while (!BS.getCurrentScanResult().isClean());
             }
             passenger = returnHandBaggageToPassanger(passenger, scannedBaggage);
         }

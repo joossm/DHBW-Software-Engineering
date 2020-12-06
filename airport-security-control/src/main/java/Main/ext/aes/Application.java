@@ -9,7 +9,6 @@ import java.util.Base64;
 
 public class Application {
     private SecretKeySpec secretKey;
-    private byte[] key;
 
     public static void main(String... args) {
         Application application = new Application();
@@ -41,7 +40,7 @@ public class Application {
         MessageDigest sha;
 
         try {
-            key = inputKey.getBytes(StandardCharsets.UTF_8);
+            byte[] key = inputKey.getBytes(StandardCharsets.UTF_8);
             sha = MessageDigest.getInstance("SHA-1");
             key = sha.digest(key);
             key = Arrays.copyOf(key, 16);

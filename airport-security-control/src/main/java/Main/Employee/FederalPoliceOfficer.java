@@ -1,14 +1,16 @@
 package Main.Employee;
 
-import Main.*;
-import Main.Components.Reader;
 import Main.Components.Scanner.ProhibitedItem;
 import Main.Components.Scanner.ScanResult;
 import Main.Components.Tray;
-import Main.Passanger.DestroyedHandBaggage;
-import Main.Passanger.HandBaggage;
-import Main.Passanger.Passenger;
+import Main.ExplosivesTraceDetector;
+import Main.FederalPoliceStation;
+import Main.Passenger.DestroyedBaggage;
+import Main.Passenger.Baggage;
+import Main.Passenger.Passenger;
+import Main.Roboter;
 import Main.SimulationEmployee.SupervisorWorkspaceSupervisor;
+import Main.TestStripe;
 import Main.Workspaces.Workspace;
 
 import java.time.LocalDate;
@@ -24,6 +26,7 @@ public class FederalPoliceOfficer extends Employee {
         this.grade = grade;
         this.station = station;
     }
+
     public int getGrade() {
         return grade;
     }
@@ -40,9 +43,8 @@ public class FederalPoliceOfficer extends Employee {
         return station.getRoboter();
     }
 
-    public TestStripe swipe(HandBaggage handBaggage) {
+    public TestStripe swipe(Baggage baggage) {
 
-        //Leider ist es mir nicht klar woher die daten für den Teststripe kommen deshalb verwende ich hier eine Dummy impl
         var stripeData = dummyTestStripe();
 
         var stripe = new TestStripe(new char[30][10]);
@@ -58,7 +60,7 @@ public class FederalPoliceOfficer extends Employee {
 
         arr[0] = "000exp0000".toCharArray();
 
-        for(var i = 1; i < arr.length; i++) {
+        for (var i = 1; i < arr.length; i++) {
             arr[i] = data;
         }
 
@@ -69,23 +71,21 @@ public class FederalPoliceOfficer extends Employee {
         return detector.test(teststripe);
     }
 
-    public DestroyedHandBaggage destroy(HandBaggage handBaggage) {
-        return controlledRoboter.destroy(handBaggage);
+    public DestroyedBaggage destroy(Baggage baggage) {
+        return controlledRoboter.destroy(baggage);
     }
 
     public Tray openHandBaggageWeaponToOfficer(Passenger passenger, SupervisorWorkspaceSupervisor supervisor, FederalPoliceOfficer policeOfficer03, Tray removeTray, ScanResult result) {
         var baggage = removeTray.getHandBaggage();
-        if(result.getType() != ProhibitedItem.WEAPON_GLOCK7)
-        {
+        if (result.getType() != ProhibitedItem.WEAPON_GLOCK7) {
             throw new IllegalArgumentException();
         }
 
         var layer = baggage.getLayers()[result.getLayer()];
 
 
-
         layer.rewriteFromPos(result.getPosition(), "000000000000000");
-        baggage.setLayer(result.getLayer(),layer);
+        baggage.setLayer(result.getLayer(), layer);
 
         removeTray.setHandBaggage(baggage);
 

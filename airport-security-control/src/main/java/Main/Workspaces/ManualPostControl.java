@@ -1,10 +1,10 @@
 package Main.Workspaces;
 
-import Main.Components.BaggageScanner.BaggageScanner;
+import Main.Components.BaggageScanner.BS;
 
 public class ManualPostControl extends Workspace {
 
-    public ManualPostControl(BaggageScanner baggageScanner) {
-        super(baggageScanner);
+    public ManualPostControl(BS BS) {
+        super(BS);
     }
 }

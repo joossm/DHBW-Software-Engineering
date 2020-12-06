@@ -1,10 +1,10 @@
 package Main.ext.builder;
 
 public class Pizza {
-    private int size;
-    private boolean cheese;
-    private boolean pepperoni;
-    private boolean bacon;
+    private final int size;
+    private final boolean cheese;
+    private final boolean pepperoni;
+    private final boolean bacon;
 
     private Pizza(Builder builder) {
         size = builder.size;
@@ -19,10 +19,8 @@ public class Pizza {
     }
 
     public static class Builder {
-        //required
-        private final int size;
 
-        //optional
+        private final int size;
         private boolean cheese = false;
         private boolean pepperoni = false;
         private boolean bacon = false;

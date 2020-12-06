@@ -19,7 +19,6 @@ public class Belt {
     }
 
     public void setIncomingTray(Tray tray) {
-        //if there is still a tray in front of the scanner throw exception
         if(incoming != null)
         {
             throw new RuntimeException();

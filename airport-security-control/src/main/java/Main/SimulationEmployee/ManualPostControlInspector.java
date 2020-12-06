@@ -5,7 +5,7 @@ import Main.Components.Scanner.ScanResult;
 import Main.Components.Tray;
 import Main.Employee.IDCard;
 import Main.Employee.Inspector;
-import Main.Passanger.Passenger;
+import Main.Passenger.Passenger;
 import Main.Workspaces.ManualPostControl;
 
 import java.time.LocalDate;
@@ -28,13 +28,12 @@ public class ManualPostControlInspector extends Inspector {
 
     public Tray openHandBaggageAndDisposeKnife(Passenger passenger, Tray removeTray, ScanResult result) {
         var baggage = removeTray.getHandBaggage();
-        if(result.getType() != ProhibitedItem.KNIFE)
-        {
+        if (result.getType() != ProhibitedItem.KNIFE) {
             throw new IllegalArgumentException();
         }
 
         var layer = baggage.getLayers()[result.getLayer()];
-        layer.rewriteFromPos(result.getPosition(),"00000");
+        layer.rewriteFromPos(result.getPosition(), "00000");
 
         baggage.setLayer(result.getLayer(), layer);
 
