@@ -5,5 +5,5 @@ public enum BSStatus {
     DEACTIVATED,
     LOCKED,
     ACTIVATED,
-    INUSE, penis
+    INUSE
 }
