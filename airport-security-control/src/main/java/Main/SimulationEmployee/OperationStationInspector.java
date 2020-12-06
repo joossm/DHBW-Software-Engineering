@@ -13,7 +13,6 @@ public class OperationStationInspector extends Inspector {
 
     public OperationStationInspector(int id, String name, LocalDate birthDate, IDCard idCard, boolean isSenior, OperationStation operationStation) {
         super(id, name, birthDate, idCard, isSenior);
-
         this.operationStation = operationStation;
     }
 

@@ -17,7 +17,6 @@ public class ManualPostControlInspector extends Inspector {
 
     public ManualPostControlInspector(int id, String name, LocalDate birthDate, IDCard idCard, boolean isSenior, ManualPostControl manualPostControl) {
         super(id, name, birthDate, idCard, isSenior);
-
         this.manualPostControl = manualPostControl;
     }
 

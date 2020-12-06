@@ -2,11 +2,7 @@ package Main.Passenger;
 
 public class Passenger {
 
-
     private Baggage[] baggages;
-
-
-
     private final String name;
 
     public Passenger(String name, Baggage[] baggage)
@@ -51,9 +47,9 @@ public class Passenger {
         return null;
     }
     public void addBaggage(Baggage baggage) {
-        for(var i = 0; i < baggages.length; i++) {
-            if(baggages[i] == null) {
-                baggages[i] = baggage;
+        for(var x = 0; x < baggages.length; x++) {
+            if(baggages[x] == null) {
+                baggages[x] = baggage;
                 return;
             }
         }

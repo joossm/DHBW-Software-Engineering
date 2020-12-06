@@ -13,7 +13,6 @@ public class SupervisorWorkspaceSupervisor extends Supervisor {
 
     public SupervisorWorkspaceSupervisor(int id, String name, LocalDate birthDate, IDCard idCard, boolean isSenior, boolean isExecutive, SupervisorCounter counter) {
         super(id, name, birthDate, idCard, isSenior, isExecutive);
-
         this.counter = counter;
     }
 
