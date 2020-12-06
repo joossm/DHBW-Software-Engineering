@@ -38,22 +38,22 @@ public abstract class Employee {
     public abstract Counter getCounter();
 
     public boolean auth(Reader reader, Pin enteredPin, EmployeeProfileType type) throws Exception {
-        var res = reader.checkCard(idCard, enteredPin, type);
-        if (res) {
+        var resolution = reader.checkCard(idCard, enteredPin, type);
+        if (resolution) {
             idCard.resetWrongPinCounter();
         } else {
             idCard.wrongPinEntered();
         }
-        return res;
+        return resolution;
     }
 
     public boolean auth(Reader reader, EmployeeProfileType type) throws Exception {
-        var res = reader.checkCard(idCard, type);
-        if (res) {
+        var resolution = reader.checkCard(idCard, type);
+        if (resolution) {
             idCard.resetWrongPinCounter();
         } else {
             idCard.wrongPinEntered();
         }
-        return res;
+        return resolution;
     }
 }
