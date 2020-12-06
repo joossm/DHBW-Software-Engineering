@@ -35,7 +35,7 @@ public abstract class Employee {
         return birthDate;
     }
 
-    public abstract Counter getWorkspace();
+    public abstract Counter getCounter();
 
     public boolean auth(Reader reader, Pin enteredPin, EmployeeProfileType type) throws Exception {
         var res = reader.checkCard(idCard, enteredPin, type);

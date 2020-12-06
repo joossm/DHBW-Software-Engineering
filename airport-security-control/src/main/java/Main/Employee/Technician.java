@@ -17,7 +17,7 @@ public class Technician extends Employee {
     }
 
     @Override
-    public Counter getWorkspace() {
+    public Counter getCounter() {
         return null;
     }
 

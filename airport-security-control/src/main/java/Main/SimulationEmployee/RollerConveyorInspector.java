@@ -16,7 +16,7 @@ public class RollerConveyorInspector extends Inspector {
     }
 
     @Override
-    public RollerConveyor getWorkspace() {
+    public RollerConveyor getCounter() {
         return rollerConveyor;
     }
 

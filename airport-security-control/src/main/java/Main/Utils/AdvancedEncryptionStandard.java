@@ -13,9 +13,6 @@ public class AdvancedEncryptionStandard {
     private SecretKeySpec secretKey;
     private byte[] key;
 
-    public AdvancedEncryptionStandard(String secretStr) {
-        this.secretStr = secretStr;
-    }
     public AdvancedEncryptionStandard() {
         this.secretStr = "dhbw$20^20_";
     }

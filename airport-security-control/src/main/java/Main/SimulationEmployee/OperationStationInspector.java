@@ -32,7 +32,7 @@ public class OperationStationInspector extends Inspector {
     }
 
     @Override
-    public OperationStation getWorkspace() {
+    public OperationStation getCounter() {
         return operationStation;
     }
 
