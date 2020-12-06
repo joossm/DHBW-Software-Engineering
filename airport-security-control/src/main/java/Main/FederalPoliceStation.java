@@ -8,10 +8,10 @@ import java.util.concurrent.ThreadLocalRandom;
 public class FederalPoliceStation {
 
     Queue<FederalPoliceOfficer> officers;
-    List<Roboter> roboters;
+    List<Robot> robots;
 
     public FederalPoliceStation() {
-        roboters = new ArrayList<>(Arrays.asList(new Roboter(), new Roboter(), new Roboter()));
+        robots = new ArrayList<>(Arrays.asList(new Robot(), new Robot(), new Robot()));
         officers = new LinkedList<>();
     }
 
@@ -25,12 +25,12 @@ public class FederalPoliceStation {
     }
 
 
-    public Roboter getRoboter() {
+    public Robot getRoboter() {
 
         final int min = 0;
         final int max = 2;
         final var i = ThreadLocalRandom.current().nextInt(min, max + 1);
 
-        return roboters.get(i);
+        return robots.get(i);
     }
 }

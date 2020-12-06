@@ -8,7 +8,7 @@ import Main.FederalPoliceStation;
 import Main.Passenger.DestroyedBaggage;
 import Main.Passenger.Baggage;
 import Main.Passenger.Passenger;
-import Main.Roboter;
+import Main.Robot;
 import Main.SimulationEmployee.SupervisorWorkspaceSupervisor;
 import Main.TestStripe;
 import Main.Workspaces.Workspace;
@@ -19,7 +19,7 @@ public class FederalPoliceOfficer extends Employee {
     private final int grade;
     private final FederalPoliceStation station;
     private Passenger arrestedPassenger;
-    private Roboter controlledRoboter;
+    private Robot controlledRobot;
 
     public FederalPoliceOfficer(int id, String name, LocalDate birthDate, IDCard idCard, int grade, FederalPoliceStation station) {
         super(id, name, birthDate, idCard);
@@ -39,7 +39,7 @@ public class FederalPoliceOfficer extends Employee {
         return station.getBackup();
     }
 
-    public Roboter callRoboter() {
+    public Robot callRoboter() {
         return station.getRoboter();
     }
 
@@ -72,7 +72,7 @@ public class FederalPoliceOfficer extends Employee {
     }
 
     public DestroyedBaggage destroy(Baggage baggage) {
-        return controlledRoboter.destroy(baggage);
+        return controlledRobot.destroy(baggage);
     }
 
     public Tray openHandBaggageWeaponToOfficer(Passenger passenger, SupervisorWorkspaceSupervisor supervisor, FederalPoliceOfficer policeOfficer03, Tray removeTray, ScanResult result) {
@@ -103,8 +103,8 @@ public class FederalPoliceOfficer extends Employee {
         return null;
     }
 
-    public void controlRoboter(Roboter roboter) {
-        controlledRoboter = roboter;
+    public void controlRoboter(Robot robot) {
+        controlledRobot = robot;
     }
 }
 

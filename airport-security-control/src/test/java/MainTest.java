@@ -304,8 +304,8 @@ public class MainTest
         return ret;
     }
     private DestroyedBaggage processOnExplosiveFound(Tray tray, FederalPoliceOfficer policeOfficer02, FederalPoliceOfficer policeOfficer03) {
-        Roboter roboter = policeOfficer01.callRoboter();
-        policeOfficer02.controlRoboter(roboter);
+        Robot robot = policeOfficer01.callRoboter();
+        policeOfficer02.controlRoboter(robot);
 
         TestStripe teststripe = policeOfficer03.swipe(tray.getHandBaggage());
         var resultDetector = policeOfficer03.checkTestStripeWithDetector(teststripe, detector);
