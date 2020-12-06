@@ -226,8 +226,8 @@ public class MainTest {
                 var layer = Integer.parseInt(propValues[1]);
                 var pos = Integer.parseInt(propValues[2]);
 
-                var selectedbaggage = baggage[count];
-                var selectedLayer = selectedbaggage.getLayers()[layer];
+                var selectively = baggage[count];
+                var selectedLayer = selectively.getLayers()[layer];
                 if ("K".equals(type)) {
                     selectedLayer.rewriteFromPos(pos, "kn!fe");
                 } else if ("W".equals(type)) {
@@ -238,8 +238,8 @@ public class MainTest {
                     throw new RuntimeException("Unknown type: " + type);
                 }
 
-                selectedbaggage.setLayer(layer, selectedLayer);
-                baggage[count] = selectedbaggage;
+                selectively.setLayer(layer, selectedLayer);
+                baggage[count] = selectively;
 
 
                 count++;
@@ -286,7 +286,7 @@ public class MainTest {
     }
 
     private void processOnKnifeFound(Tray tray, Passenger passenger, ScanResult result) throws Exception {
-        inspectorI2.contact(inspectorI3);
+        inspectorI2.contact();
         Tray removedTray = inspectorI3.openHandBaggageAndDisposeKnife(passenger, tray, result);
         inspectorI3.putTrayToBaggageScannerExit(removedTray);
         inspectorI2.clickButtonLeft();

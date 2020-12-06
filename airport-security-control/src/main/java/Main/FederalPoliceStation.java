@@ -23,9 +23,7 @@ public class FederalPoliceStation {
         officers.add(officer);
     }
 
-
     public Robot getRoboter() {
-
         final int min = 0;
         final int max = 2;
         final var i = ThreadLocalRandom.current().nextInt(min, max + 1);

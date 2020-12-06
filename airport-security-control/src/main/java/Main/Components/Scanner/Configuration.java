@@ -2,7 +2,7 @@ package Main.Components.Scanner;
 
 public class Configuration {
 
-    private SearchAlgorithm usedAlgorithm;
+    private final SearchAlgorithm usedAlgorithm;
 
     public Configuration(SearchAlgorithm usedAlgorithm) {
         this.usedAlgorithm = usedAlgorithm;
@@ -12,7 +12,4 @@ public class Configuration {
         return usedAlgorithm;
     }
 
-    public void setUsedAlgorithm(SearchAlgorithm usedAlgorithm) {
-        this.usedAlgorithm = usedAlgorithm;
-    }
 }

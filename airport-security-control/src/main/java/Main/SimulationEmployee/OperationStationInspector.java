@@ -35,8 +35,7 @@ public class OperationStationInspector extends Inspector {
         return operationStation;
     }
 
-
-    public void contact(ManualPostControlInspector inspectorI3) {
+    public void contact() {
     }
 
     public boolean activateAlarm() throws Exception {

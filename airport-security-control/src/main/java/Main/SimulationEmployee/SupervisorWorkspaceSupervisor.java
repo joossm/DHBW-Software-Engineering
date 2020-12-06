@@ -23,7 +23,6 @@ public class SupervisorWorkspaceSupervisor extends Supervisor {
         return getCounter().onButtonStartBaggageScannerClicked(this);
     }
 
-
     public SupervisorCounter getCounter() {
         return counter;
     }

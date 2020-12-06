@@ -24,7 +24,7 @@ public class BS {
     private final Track track02;
     private final Belt belt;
     private ScanResult currentScanResult;
-    private Configuration scannerConfiguration;
+    private final Configuration scannerConfiguration;
 
     public BS(Reader reader, Scanner scanner, ScanRecorder scanRecorder, Track track01, Track track02, Belt belt, Configuration scannerConfiguration) {
         this.reader = reader;
@@ -48,14 +48,6 @@ public class BS {
         this.state = state;
     }
 
-    public Configuration getScannerConfiguration() {
-        return scannerConfiguration;
-    }
-
-    public void setScannerConfiguration(Configuration scannerConfiguration) {
-        this.scannerConfiguration = scannerConfiguration;
-    }
-
     public boolean alarm(Employee e) throws Exception {
         if (e.auth(reader, EmployeeProfileType.I))
             if (getState() != BSStatus.DEACTIVATED && getState() != BSStatus.SHUTDOWN) {
@@ -64,14 +56,6 @@ public class BS {
             }
 
         return false;
-    }
-
-    public boolean report(Employee e) throws Exception {
-        return e.auth(reader, EmployeeProfileType.S);
-    }
-
-    public void maintenance(Employee e) throws Exception {
-        e.auth(reader, EmployeeProfileType.T);
     }
 
     public boolean start(Employee e) throws Exception {

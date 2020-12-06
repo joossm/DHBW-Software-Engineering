@@ -8,7 +8,6 @@ public class TestStripe {
             throw new IllegalArgumentException();
         this.data = data;
     }
-
     public char[][] getData() {
         return data;
     }
