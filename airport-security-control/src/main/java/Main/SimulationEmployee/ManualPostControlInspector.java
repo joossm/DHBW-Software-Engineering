@@ -27,7 +27,7 @@ public class ManualPostControlInspector extends Inspector {
     }
 
     public Tray openHandBaggageAndDisposeKnife(Passenger passenger, Tray removeTray, ScanResult result) {
-        var baggage = removeTray.getHandBaggage();
+        var baggage = removeTray.getBaggage();
         if (result.getType() != ProhibitedItem.KNIFE) {
             throw new IllegalArgumentException();
         }
@@ -37,7 +37,7 @@ public class ManualPostControlInspector extends Inspector {
 
         baggage.setLayer(result.getLayer(), layer);
 
-        removeTray.setHandBaggage(baggage);
+        removeTray.setBaggage(baggage);
 
         return removeTray;
     }

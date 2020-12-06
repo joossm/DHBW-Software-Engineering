@@ -123,7 +123,7 @@ public class BS {
             if (getState() == BSStatus.ACTIVATED && belt.getCurrent() != null) {
                 setState(BSStatus.INUSE);
 
-                result = scanner.scan(belt.getCurrent().getHandBaggage(), scannerConfiguration);
+                result = scanner.scan(belt.getCurrent().getBaggage(), scannerConfiguration);
                 scanRecorder.logResult(result);
 
                 forwardTrays(e);

@@ -6,13 +6,13 @@ public class Tray
 
     private Baggage baggage;
 
-    public Baggage getHandBaggage()
+    public Baggage getBaggage()
     {
         return baggage;
     }
 
-    public void setHandBaggage(Baggage handbaggage)
+    public void setBaggage(Baggage baggage)
     {
-        this.baggage = handbaggage;
+        this.baggage = baggage;
     }
 }

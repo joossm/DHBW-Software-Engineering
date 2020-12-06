@@ -282,7 +282,7 @@ public class MainTest {
         Robot robot = policeOfficer01.callRoboter();
         policeOfficer02.controlRoboter(robot);
 
-        TestStripe teststripe = policeOfficer03.swipe(tray.getHandBaggage());
+        TestStripe teststripe = policeOfficer03.swipe(tray.getBaggage());
         policeOfficer03.checkTestStripeWithDetector(teststripe, detector);
 
     }
@@ -360,7 +360,7 @@ public class MainTest {
                                 var curBaggage = passenger.getBaggage()[i];
 
                                 Tray t = new Tray();
-                                t.setHandBaggage(curBaggage);
+                                t.setBaggage(curBaggage);
                                 rollerConveyor.addTray(t);
 
                                 inspectorI1.push();
@@ -514,7 +514,7 @@ public class MainTest {
             List<Baggage> scannedBaggage = new ArrayList<>();
             while ((baggage = passenger.getNextBaggage()) != null) {
                 Tray t = new Tray();
-                t.setHandBaggage(baggage);
+                t.setBaggage(baggage);
                 rollerConveyor.addTray(t);
 
                 inspectorI1.push();
@@ -560,7 +560,7 @@ public class MainTest {
                         federalPoliceStation.addOfficer(policeOfficer02);
                         federalPoliceStation.addOfficer(policeOfficer03);
                     } else if (result.getType() == ProhibitedItem.CLEAN) {
-                        scannedBaggage.add(tray.getHandBaggage());
+                        scannedBaggage.add(tray.getBaggage());
                     } else {
                         throw new IllegalStateException("Unexpected value: " + result.getType());
                     }
