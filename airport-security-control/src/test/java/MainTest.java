@@ -355,9 +355,9 @@ public class MainTest {
                             int id = passengers.indexOf(passenger);
                             assertEquals(passenger.getName(), names.get(id));
 
-                            for (var i = 0; i < passenger.getBaggages().length; i++) {
+                            for (var i = 0; i < passenger.getBaggage().length; i++) {
 
-                                var curBaggage = passenger.getBaggages()[i];
+                                var curBaggage = passenger.getBaggage()[i];
 
                                 Tray t = new Tray();
                                 t.setHandBaggage(curBaggage);
@@ -414,7 +414,7 @@ public class MainTest {
                 .map(passenger -> DynamicTest.dynamicTest("Checking passenger: " + passenger.getName(),
                         () -> {
                             int id = passengers.indexOf(passenger);
-                            assertEquals(passenger.getBaggages().length, outputList.get(id));
+                            assertEquals(passenger.getBaggage().length, outputList.get(id));
                         }));
     }
 

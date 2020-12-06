@@ -20,7 +20,4 @@ public class SupervisorCounter extends Counter {
         return getBaggageScanner().start(e);
     }
 
-    public boolean onButtonShutdownBaggageScannerClicked(Employee e) throws Exception {
-        return getBaggageScanner().shutdown(e);
-    }
 }

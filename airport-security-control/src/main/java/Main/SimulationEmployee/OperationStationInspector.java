@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 public class OperationStationInspector extends Inspector {
 
-    private OperationStation operationStation;
+    private final OperationStation operationStation;
 
     public OperationStationInspector(int id, String name, LocalDate birthDate, IDCard idCard, boolean isSenior, OperationStation operationStation) {
         super(id, name, birthDate, idCard, isSenior);
@@ -38,7 +38,6 @@ public class OperationStationInspector extends Inspector {
 
 
     public void contact(ManualPostControlInspector inspectorI3) {
-        //TODO sinnlose Funktion
     }
 
     public boolean activateAlarm() throws Exception {
