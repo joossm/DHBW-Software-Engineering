@@ -1,6 +1,7 @@
 package Main.Employee;
 
-public enum IDCardType {
+public enum IDCardType
+{
     staff,
     external
 }

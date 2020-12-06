@@ -1,5 +1,6 @@
 package Main.Employee;
 
-public enum EmployeeProfileType {
+public enum EmployeeProfileType
+{
     I,S,O,T,K
 }
