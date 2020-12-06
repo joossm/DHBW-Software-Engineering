@@ -33,10 +33,10 @@ public class Passenger {
     }
 
     public Baggage getNextBaggage() {
-        for (var i = 0; i < getBaggage().length; i++) {
-            var cur = getBaggage()[i];
+        for (var x = 0; x < getBaggage().length; x++) {
+            var cur = getBaggage()[x];
             if (cur != null) {
-                setBaggage(i);
+                setBaggage(x);
                 return cur;
             }
         }
@@ -44,9 +44,9 @@ public class Passenger {
     }
 
     public void addBaggage(Baggage baggage) {
-        for (var i = 0; i < this.baggage.length; i++) {
-            if (this.baggage[i] == null) {
-                this.baggage[i] = baggage;
+        for (var x = 0; x < this.baggage.length; x++) {
+            if (this.baggage[x] == null) {
+                this.baggage[x] = baggage;
                 return;
             }
         }
