@@ -18,25 +18,32 @@ public class KnuthMorrisPratt implements IStringMatching{
         }
     }
 
-    public int search(String text, String pattern) {
-        int n = text.length();
-        int m = pattern.length();
+    public int search(String text, String pattern)
+    {
+        int x = text.length();
+        int y = pattern.length();
 
         int[] fail = computeFail(pattern);
-        int i = 0;
+        int z = 0;
         int j = 0;
 
-        while (i < n) {
-            if (pattern.charAt(j) == text.charAt(i)) {
-                if (j == m - 1) {
-                    return i - m + 1; // match
+        while (z < x)
+        {
+            if (pattern.charAt(j) == text.charAt(z))
+            {
+                if (j == y - 1) {
+                    return z - y + 1; // match
                 }
-                i++;
+                z++;
                 j++;
-            } else if (j > 0) {
+            }
+            else if (j > 0)
+            {
                 j = fail[j - 1];
-            } else {
-                i++;
+            }
+            else
+            {
+                z++;
             }
         }
 

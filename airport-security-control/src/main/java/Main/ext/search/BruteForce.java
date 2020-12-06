@@ -8,32 +8,35 @@ public class BruteForce implements IStringMatching {
         String pattern = "java";
         System.out.println("text    : " + text);
         System.out.println("pattern : " + pattern);
-        int position = bruteForce.search(text, pattern);
+        int pos = bruteForce.search(text, pattern);
 
-        if (position == -1) {
+        if (pos == -1) {
             System.out.println("pattern not found");
         } else {
-            System.out.println("pattern found at position : " + position);
+            System.out.println("pattern found at position : " + pos);
         }
     }
 
-    public int search(String text, String pattern) {
-        int n = text.length();
-        int m = pattern.length();
+    public int search(String text, String pattern)
+    {
+        int x = text.length();
+        int y = pattern.length();
         int j;
 
-        for (int i = 0; i <= (n - m); i++) {
+        for (int z = 0; z <= (x - y); z++)
+        {
             j = 0;
 
-            while ((j < m) && (text.charAt(i + j) == pattern.charAt(j))) {
+            while ((j < y) && (text.charAt(z + j) == pattern.charAt(j)))
+            {
                 j++;
             }
 
-            if (j == m) {
-                return i;
+            if (j == y)
+            {
+                return z;
             }
         }
-
         return -1;
     }
 }
